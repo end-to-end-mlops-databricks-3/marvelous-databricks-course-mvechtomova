@@ -23,8 +23,8 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            arn: arn:aws:secretsmanager:eu-west-1:354918379455:secret:dev_dbr-l2HoQV
-            parse-json-secrets: true
+            dev_dbr
+          parse-json-secrets: true
 
       - name: Install Databricks CLI
         uses: databricks/setup-cli@49580195afe1ccb06d195764a1d0ae9fabfe2edd #v0.246.0
