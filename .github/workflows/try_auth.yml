@@ -23,23 +23,23 @@ jobs:
 
       - name: Step name
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
-        # will parse secret called CLIENT_ID and CLIENT_SECRET
+        # will parse secret called DATABRICKS_CLIENT_ID and DATABRICKS_CLIENT_SECRET
         with:
           secret-ids: |
             , dev_dbr
           parse-json-secrets: true
 
-      - name: Get Databricks Token
-        id: get_token
-        run: |
+      # - name: Get Databricks Token
+      #   id: get_token
+      #   run: |
           
-          DATABRICKS_TOKEN=$(curl --request POST \
-            --url "${DATABRICKS_HOST}/oidc/v1/token" \
-            --user "$CLIENT_ID:$CLIENT_SECRET" \
-            --data 'grant_type=client_credentials&scope=all-apis' \
-            | jq -r '.access_token')
+      #     DATABRICKS_TOKEN=$(curl --request POST \
+      #       --url "${DATABRICKS_HOST}/oidc/v1/token" \
+      #       --user "$CLIENT_ID:$CLIENT_SECRET" \
+      #       --data 'grant_type=client_credentials&scope=all-apis' \
+      #       | jq -r '.access_token')
             
-          echo "DATABRICKS_TOKEN=$DATABRICKS_TOKEN" >> $GITHUB_ENV
+      #     echo "DATABRICKS_TOKEN=$DATABRICKS_TOKEN" >> $GITHUB_ENV
 
       - name: Install Databricks CLI
         uses: databricks/setup-cli@49580195afe1ccb06d195764a1d0ae9fabfe2edd #v0.246.0
