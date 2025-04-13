@@ -23,7 +23,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            dev_dbr/DATABRICKS_TOKEN
+            , dev_dbr
           parse-json-secrets: true
 
       - name: Install Databricks CLI
