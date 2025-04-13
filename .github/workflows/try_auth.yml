@@ -54,4 +54,6 @@ jobs:
             git push origin $VERSION
             fi
             databricks bundle deploy --var="git_sha=${{ github.sha }}"
+
+        #todo: discord webhook: https://github.com/tsickert/discord-webhook
      
