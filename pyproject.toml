@@ -17,8 +17,17 @@ dependencies = ["mlflow==2.17.0",
                 "databricks-feature-engineering==0.6",
                 "databricks-feature-lookup==1.2.0",
                 "databricks-sdk==0.32.0",
-                "pydantic==2.9.2"
+                "pydantic==2.9.2",
+                "marvelous"
                 ]
+
+[tool.uv.sources]
+marvelous= { index = "github_marvelous" }
+
+# Specify where our Gitlab package registry is
+[[tool.uv.index]]
+name = "github_marvelous"
+url = "https://x-access-token:${GIT_TOKEN}@github.com/end-to-end-mlops-databricks-3/marvelous@main"
 
 [project.optional-dependencies]
 dev = ["databricks-connect>=15.4.1, <16",
